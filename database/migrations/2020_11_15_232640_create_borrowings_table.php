@@ -18,7 +18,13 @@ class CreateBorrowingsTable extends Migration
             $table->uuid('hash');
             $table->dateTime('borrowing_time');
             $table->dateTime('return_time')->nullable();
+
+            // key
+            $table->bigInteger('key_id')->unsigned();
             $table->foreign('key_id')->references('id')->on('keys')->onDelete('cascade');
+
+            // user
+            $table->bigInteger('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }

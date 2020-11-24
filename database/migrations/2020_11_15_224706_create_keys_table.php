@@ -18,7 +18,11 @@ class CreateKeysTable extends Migration
             $table->uuid('hash');
             $table->string('name');
             $table->enum('availability', ['unavailable', 'available'])->default('unavailable');
-            $table->foreign('room_id')->references('id')->on('room')->onDelete('cascade');
+
+            // room
+            $table->bigInteger('room_id')->unsigned();
+            $table->foreign('room_id')->references('id')->on('rooms')->onDelete('cascade');
+
             $table->timestamps();
         });
     }
