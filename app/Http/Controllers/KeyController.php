@@ -28,7 +28,7 @@ class KeyController extends Controller
             'name' => 'required',
             'room_id' => [
                 'required',
-                Rule::exists('room', 'hash')
+                Rule::exists('rooms', 'hash')
             ],
         ]);
 

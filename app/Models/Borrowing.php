@@ -8,7 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Borrowing extends Model
 {
-    use HasFactory, UseHash;
+    use UseHash;
+
+    public $timestamps = false;
 
     /**
      * The attributes that are mass assignable.
@@ -17,6 +19,10 @@ class Borrowing extends Model
      */
     protected $fillable = [
         'borrowing_time',
+        'return_time',
+        'status',
+        'key_id',
+        'user_id'
     ];
 
     /**

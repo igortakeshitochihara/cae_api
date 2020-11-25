@@ -37,7 +37,7 @@ Route::group(['middleware' => 'auth:api'], function () {
     });
 
     Route::group(['prefix' => 'borrowing'], function () {
-        Route::post('/{hash}', ['uses' => 'App\Http\Controllers\RoomController@borrowing']);
-        Route::put('/{hash}', ['uses' => 'App\Http\Controllers\RoomController@return']);
+        Route::post('/{hash}', ['uses' => 'App\Http\Controllers\BorrowingController@borrowing']);
+        Route::put('/{hash}', ['uses' => 'App\Http\Controllers\BorrowingController@return']);
     });
 });

@@ -26,6 +26,6 @@ class RoomRepository extends BaseRepository
 
     public function list()
     {
-        return parent::all();
+        return parent::all()->makeHidden('id');
     }
 }

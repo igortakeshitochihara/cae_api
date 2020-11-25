@@ -16,6 +16,7 @@ class CreateBorrowingsTable extends Migration
         Schema::create('borrowings', function (Blueprint $table) {
             $table->id();
             $table->uuid('hash');
+            $table->enum('status', ['open', 'closed'])->default('open');
             $table->dateTime('borrowing_time');
             $table->dateTime('return_time')->nullable();
 

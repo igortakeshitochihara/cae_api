@@ -33,8 +33,7 @@ class KeyRepository extends BaseRepository
     {
         return parent::all()->map(function ($query) {
             $query->room = $query->room();
-            $query->makeHidden('id');
             return $query;
-        });
+        })->makeHidden(['id', 'room_id']);
     }
 }

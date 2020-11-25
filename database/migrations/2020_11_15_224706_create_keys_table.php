@@ -17,7 +17,7 @@ class CreateKeysTable extends Migration
             $table->id();
             $table->uuid('hash');
             $table->string('name');
-            $table->enum('availability', ['unavailable', 'available'])->default('unavailable');
+            $table->enum('availability', ['unavailable', 'available'])->default('available');
 
             // room
             $table->bigInteger('room_id')->unsigned();
