@@ -27,13 +27,15 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::group(['prefix' => 'key'], function () {
         Route::post('/', ['uses' => 'App\Http\Controllers\KeyController@add']);
         Route::get('/', ['uses' => 'App\Http\Controllers\KeyController@list']);
-//        Route::put('/', ['uses' => 'App\Http\Controllers\KeyController@update']);
+        Route::put('/', ['uses' => 'App\Http\Controllers\KeyController@update']);
+        Route::delete('/{hash}', ['uses' => 'App\Http\Controllers\KeyController@remove']);
     });
 
     Route::group(['prefix' => 'room'], function () {
         Route::post('/', ['uses' => 'App\Http\Controllers\RoomController@add']);
         Route::get('/', ['uses' => 'App\Http\Controllers\RoomController@list']);
-//        Route::put('/', ['uses' => 'App\Http\Controllers\RoomController@update']);
+        Route::put('/', ['uses' => 'App\Http\Controllers\RoomController@update']);
+        Route::delete('/{hash}', ['uses' => 'App\Http\Controllers\RoomController@remove']);
     });
 
     Route::group(['prefix' => 'borrowing'], function () {

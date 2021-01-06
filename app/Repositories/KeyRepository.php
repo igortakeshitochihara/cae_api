@@ -29,11 +29,32 @@ class KeyRepository extends BaseRepository
         return ['message' => 'Chave adicionado com sucesso'];
     }
 
+    public function update($request)
+    {
+        $room = $this->room->where('hash', $request['room_id'])->first();
+        $key = $this->model->where('hash', $request['hash'])->first();
+        parent::update([
+            'id' => $key->id,
+            'name' => $request->name,
+            'room_id' => $room->id
+        ]);
+        return ['message' => 'Chave alterado com sucesso'];
+    }
+
     public function list()
     {
         return parent::all()->map(function ($query) {
             $query->room = $query->room();
+            if ($query->availability == 'unavailable')
+                $query->borrowing = $query->borrowing();
             return $query;
         })->makeHidden(['id', 'room_id']);
+    }
+
+    public function remove($hash)
+    {
+        $key = $this->model->where('hash', $hash)->first();
+        $key->delete();
+        return ['message' => 'Chave removido com sucesso'];
     }
 }

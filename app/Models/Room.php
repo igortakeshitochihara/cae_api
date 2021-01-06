@@ -28,4 +28,14 @@ class Room extends Model
         'updated_at',
         'created_at'
     ];
+
+    public function keysUnavailable()
+    {
+        return $this->hasMany('App\Models\Key', 'room_id', 'id')->where('availability', 'unavailable')->get();
+    }
+
+    public function keys()
+    {
+        return $this->hasMany('App\Models\Key', 'room_id', 'id')->get();
+    }
 }

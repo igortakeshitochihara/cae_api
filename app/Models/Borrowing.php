@@ -31,4 +31,9 @@ class Borrowing extends Model
      * @var array
      */
     protected $hidden = [];
+
+    public function user()
+    {
+        return $this->hasOne('App\Models\User', 'id', 'user_id')->first()->makeHidden('id');
+    }
 }

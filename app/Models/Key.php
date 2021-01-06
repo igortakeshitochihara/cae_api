@@ -35,4 +35,13 @@ class Key extends Model
     {
         return $this->hasOne('App\Models\Room', 'id', 'room_id')->first()->makeHidden('id');
     }
+
+    public function borrowing()
+    {
+        $borrowing = $this->hasOne('App\Models\Borrowing', 'key_id', 'id')->where('status', 'open')
+            ->first()->makeHidden('id');
+        $borrowing->user = $borrowing->user();
+        $borrowing->makeHidden('user_id', 'key_id');
+        return $borrowing;
+    }
 }

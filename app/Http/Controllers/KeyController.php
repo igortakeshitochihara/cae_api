@@ -35,8 +35,41 @@ class KeyController extends Controller
         return $this->ok($this->key->add($this->input));
     }
 
+    public function update()
+    {
+        $this->validate($this->input, [
+            'name' => 'required',
+            'hash' => [
+                'required',
+                Rule::exists('keys', 'hash')
+            ],
+            'room_id' => [
+                'required',
+                Rule::exists('rooms', 'hash')
+            ],
+        ]);
+
+        return $this->ok($this->key->update($this->input));
+    }
+
     public function list()
     {
         return $this->ok($this->key->list());
+    }
+
+    public function remove($hash) {
+        $request = new \Illuminate\Http\Request();
+
+        $request->replace(['hash' => $hash]);
+
+        $this->validate($request, [
+            'hash' => [
+                'required',
+                Rule::exists('keys', 'hash')
+                    ->where('availability', 'unavailable'),
+            ],
+        ], ['hash.required' => 'Não encontramos a chave!',
+            'hash.exists' => 'A chave está sendo usada!']);
+        return $this->ok($this->key->remove($hash));
     }
 }
