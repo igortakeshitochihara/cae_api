@@ -1,11 +1,11 @@
-.env
+#.env
 .vscode/
 vendor/
 .editorconfig
 .env.example
 .gitattributes
-#composer.lock
+composer.lock
 storage/oauth-private.key
 storage/oauth-public.key
 .idea/
-#/composer.lock
+/composer.lock
