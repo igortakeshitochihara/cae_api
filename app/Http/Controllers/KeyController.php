@@ -66,7 +66,7 @@ class KeyController extends Controller
             'hash' => [
                 'required',
                 Rule::exists('keys', 'hash')
-                    ->where('availability', 'unavailable'),
+                    ->where('availability', 'available'),
             ],
         ], ['hash.required' => 'Não encontramos a chave!',
             'hash.exists' => 'A chave está sendo usada!']);
