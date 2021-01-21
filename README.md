@@ -1,3 +1,7 @@
+Projeto para organização de chaves de um campus. É um sistema simples desenvolvido utilizando Flutter (Front-End) e Laravel (Back-End).
+
+Project for organizing campus keys. Is a simple system developed using Flutter (Front-End) and Laravel (Back-End).
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
 <p align="center">
